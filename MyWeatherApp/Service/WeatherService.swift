@@ -19,6 +19,11 @@ public final class WeatherService: NSObject {
         locationManager.distanceFilter = CLLocationDistanceMax
     }
     
+    func reUpdatingLocation() {
+        locationManager.stopUpdatingLocation()
+        locationManager.startUpdatingLocation()
+    }
+    
     func getLocationData(
         _ completionHandler: @escaping((CLLocation?, LocationAuthError?) -> Void)
     ) {
@@ -65,7 +70,7 @@ public final class WeatherService: NSObject {
         let myTimeStamp = yesterday.timeIntervalSince1970
         
         let urlString = OpenWeatherAPI.getHistoryURLFor(lat: coord.latitude, lon: coord.longitude, dt: Int(myTimeStamp))
-        print(urlString)
+//        print(urlString)
         
         NetworkManager<HistoryWeatherData>.fetch(for: URL(string: urlString)!) { (result) in
             switch result {
@@ -84,12 +89,11 @@ public final class WeatherService: NSObject {
             guard error == nil else {
                 return
             }
-            print("start to get placemark")
             
             guard let placemark = placemarks?[0] else {
                             return
                         }
-            print("\(placemark)")
+//            print("\(placemark)")
             if let city = placemark.subLocality {
                 handler(city)
                 return

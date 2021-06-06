@@ -11,4 +11,10 @@ struct WeatherDetail: Codable {
     var main: String
     var description: String
     var icon: String
+    
+    init() {
+        main =  "晴"
+        description = "light rain"
+        icon = "10d"
+    }
 }
