@@ -48,7 +48,7 @@ public final class WeatherService: NSObject {
         guard let coord = coorddd else {return}
         
         let urlString = OpenWeatherAPI.getCurrentURLFor(lat: coord.latitude, lon: coord.longitude)
-        print(urlString)
+//        print(urlString)
         
         NetworkManager<WeatherData>.fetch(for: URL(string: urlString)!) { (result) in
             switch result {
@@ -70,7 +70,7 @@ public final class WeatherService: NSObject {
         let myTimeStamp = yesterday.timeIntervalSince1970
         
         let urlString = OpenWeatherAPI.getHistoryURLFor(lat: coord.latitude, lon: coord.longitude, dt: Int(myTimeStamp))
-//        print(urlString)
+        print(urlString)
         
         NetworkManager<HistoryWeatherData>.fetch(for: URL(string: urlString)!) { (result) in
             switch result {
@@ -108,7 +108,7 @@ public final class WeatherService: NSObject {
     
     func changeYesterdayWeather(_ yesWeather: HistoryWeatherData) -> DailyWeather {
         var dailyData = DailyWeather()
-        dailyData.dt = 0
+        dailyData.dt = yesWeather.hourly[0].dt
         dailyData.weather = yesWeather.hourly[13].weather
         var Temps = [Double]()
         for hourlyData in yesWeather.hourly {

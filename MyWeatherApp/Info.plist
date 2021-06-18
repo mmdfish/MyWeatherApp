@@ -50,8 +50,7 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
-		<string>NotoSansSC-Regular.otf</string>
-		<string>NotoSansCJKsc-DemiLight.otf</string>
+		<string>Dosis-Medium-3.ttf</string>
 	</array>
 </dict>
 </plist>

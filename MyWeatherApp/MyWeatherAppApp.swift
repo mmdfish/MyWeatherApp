@@ -12,7 +12,8 @@ struct MyWeatherAppApp: App {
     var body: some Scene {
         WindowGroup {
             let weatherService = WeatherService()
-            WeatherView(viewModel: WeatherViewModel(weatherService: weatherService))
+            let cityService = CityService()
+            WeatherView(viewModel: WeatherViewModel(weatherService: weatherService, cityService: cityService))
         }
     }
 }

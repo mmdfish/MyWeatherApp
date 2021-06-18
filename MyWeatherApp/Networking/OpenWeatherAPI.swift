@@ -17,6 +17,6 @@ struct OpenWeatherAPI {
     }
     
     static func getHistoryURLFor(lat: Double, lon: Double, dt: Int) -> String {
-        return "\(baseURLString)onecall/timemachine?lat=\(lat)&lon=\(lon)&dt=\(dt)&appid=\(key)"
+        return "\(baseURLString)onecall/timemachine?lat=\(lat)&lon=\(lon)&dt=\(dt)&appid=\(key)&units=imperial"
     }
 }
